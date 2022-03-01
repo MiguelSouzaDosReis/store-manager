@@ -20,4 +20,18 @@ const getId = async (id) => {
   return results.map(serialize)[0];
 };
 
-module.exports = { getAll, getId };
+const create = async (name, quantity) => {
+  const querry = 'INSERT INTO StoreManager.products (name, quantity) VALUES (?,?)';
+  const [results] = await connection.execute(querry, [name, quantity]);
+  const id = results.insertId;
+  return { id, name, quantity };
+};
+
+const getName = async (name) => {
+  const query = 'SELECT  * FROM StoreManager.products WHERE name=?;';
+  const [results] = await connection.execute(query, [name]);
+  
+  return results;
+};
+
+module.exports = { getAll, getId, create, getName }; 

@@ -14,4 +14,13 @@ const everthingId = async (req, res) => {
   res.status(200).json(products);
 };
 
-module.exports = { everthing, everthingId };
+const create = async (req, res) => {
+  const { name, quantity } = req.body;
+  const exist = 'Product already exists';
+  const existName = await Products.getName(name);
+  if (existName.length > 0) { return res.status(409).json({ message: exist }); }
+  const creationProducts = await Products.create(name, quantity);
+  res.status(201).json(creationProducts);
+};
+
+module.exports = { everthing, everthingId, create };
