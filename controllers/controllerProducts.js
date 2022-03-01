@@ -9,7 +9,7 @@ const everthing = async (_req, res) => {
 const everthingId = async (req, res) => {
   const { id } = req.params;
   const products = await Products.getId(id);
-  if (!products) { return res.status(404).json({ mensage: 'Product not found' }); }
+  if (products.length === 0) { return res.status(404).json({ mensage: 'Product not found' }); }
 
   res.status(200).json(products);
 };
