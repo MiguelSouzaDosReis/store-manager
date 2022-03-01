@@ -28,10 +28,10 @@ const getId = async (id) => {
   FROM StoreManager.sales_products AS sp 
   INNER JOIN StoreManager.sales AS s
   ON sp.sale_id = s.id
-  WHERE product_id=?
+  WHERE sale_id=?
   ORDER BY sp.product_id `, [id]);
   
-  return results.map(serializeID)[0];
+  return results.map(serializeID);
 };
 
 module.exports = { getAll, getId };
