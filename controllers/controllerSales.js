@@ -9,7 +9,7 @@ const everthing = async (_req, res) => {
 const everthingId = async (req, res) => {
   const { id } = req.params;
   const sales = await Sales.getId(id);
-  if (sales.length === 0) { return res.status(404).json({ mensage: 'Sale not found' }); }
+  if (sales === undefined) { return res.status(404).json({ message: 'Sale not found' }); }
 
   res.status(200).json(sales);
 };

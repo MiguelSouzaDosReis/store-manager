@@ -31,7 +31,7 @@ const getId = async (id) => {
   WHERE product_id=?
   ORDER BY sp.product_id `, [id]);
   
-  return results.map(serializeID);
+  return results.map(serializeID)[0];
 };
 
 module.exports = { getAll, getId };
