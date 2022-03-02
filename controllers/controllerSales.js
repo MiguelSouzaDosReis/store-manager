@@ -1,4 +1,5 @@
 const Sales = require('../models/Sales');
+const SalesService = require('../services/Sales');
 
 const everthing = async (_req, res) => {
   const sales = await Sales.getAll();
@@ -22,4 +23,10 @@ const execlude = async (req, res) => {
  res.status(204).json();
 };
 
-module.exports = { everthing, everthingId, execlude };
+ const create = async (req, res) => {
+  const arrayProducts = req.body;
+  const saleCreation = SalesService.create(arrayProducts);
+  return res.status(201).json(saleCreation);
+};
+
+module.exports = { everthing, everthingId, execlude, create };

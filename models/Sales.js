@@ -38,4 +38,17 @@ const execlude = async (id) => {
   await connection.execute('DELETE FROM StoreManager.sales_products WHERE sale_id=? ', [id]);
 };
 
-module.exports = { getAll, getId, execlude };
+const createSP = async (saleId, productId, quantity) => {
+  const querry = `INSERT INTO StoreManager.sales_products
+  (sale_id,product_id,quantity) VALUES (?,?,?)`;
+  const [results] = await connection.execute(querry, [saleId, productId, quantity]);
+  return results;
+};  
+
+  const createS = async () => {
+  const querry = 'INSERT INTO StoreManager.sales (date) VALUES (now())';
+  const [results] = await connection.execute(querry);
+  return results;
+};
+
+module.exports = { getAll, getId, execlude, createSP, createS };
