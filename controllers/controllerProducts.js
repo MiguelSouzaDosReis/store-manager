@@ -32,4 +32,12 @@ const update = async (req, res) => {
   res.status(200).json(updateProducts);
 };
 
-module.exports = { everthing, everthingId, create, update };
+const execlude = async (req, res) => {
+  const { id } = req.params;
+  const productsID = await Products.getId(id);
+  if (!productsID) { return res.status(404).json({ message: 'Product not found' }); }
+  await Products.execlude(id);
+ res.status(204).json();
+};
+
+module.exports = { everthing, everthingId, create, update, execlude };
