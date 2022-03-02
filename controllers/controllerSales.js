@@ -25,7 +25,7 @@ const execlude = async (req, res) => {
 
  const create = async (req, res) => {
   const arrayProducts = req.body;
-  const saleCreation = SalesService.create(arrayProducts);
+  const saleCreation = await SalesService.create(arrayProducts);
   return res.status(201).json(saleCreation);
 };
 
