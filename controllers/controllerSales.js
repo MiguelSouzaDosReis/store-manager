@@ -14,4 +14,12 @@ const everthingId = async (req, res) => {
   res.status(200).json(sales);
 };
 
-module.exports = { everthing, everthingId };
+const execlude = async (req, res) => {
+  const { id } = req.params;
+  const salesID = await Sales.getId(id);
+  if (salesID.length === 0) { return res.status(404).json({ message: 'Sale not found' }); }
+  await Sales.execlude(id);
+ res.status(204).json();
+};
+
+module.exports = { everthing, everthingId, execlude };

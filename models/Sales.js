@@ -34,4 +34,8 @@ const getId = async (id) => {
   return results.map(serializeID);
 };
 
-module.exports = { getAll, getId };
+const execlude = async (id) => {
+  await connection.execute('DELETE FROM StoreManager.sales_products WHERE sale_id=? ', [id]);
+};
+
+module.exports = { getAll, getId, execlude };
