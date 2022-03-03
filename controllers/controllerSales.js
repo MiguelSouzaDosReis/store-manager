@@ -29,4 +29,12 @@ const execlude = async (req, res) => {
   return res.status(201).json(saleCreation);
 };
 
-module.exports = { everthing, everthingId, execlude, create };
+const update = async (req, res) => {
+  const { id } = req.params;
+  const [array] = req.body;
+  const { quantity, productId } = array;
+  const saleUpdate = await SalesService.updateIsValid(id, quantity, productId);
+  return res.status(200).json(saleUpdate);
+};
+
+module.exports = { everthing, everthingId, execlude, create, update };

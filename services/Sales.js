@@ -10,5 +10,12 @@ const create = async (arrayProducts) => {
 
   return salesCreation;
 };
+const updateIsValid = async (saleId, quantity, productId) => {
+  const updateValidade = await Sales.update(saleId, quantity, productId);
+  if (!updateValidade.affectedRows) {
+    return null;
+  }
+  return { saleId, itemUpdated: [{ quantity, productId }] };
+  };
 
-module.exports = { create };
+module.exports = { create, updateIsValid };
