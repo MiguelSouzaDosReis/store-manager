@@ -1,6 +1,6 @@
 # Project Store Manager
 
-Neste projeto eu aprendi a como criar uma arquitetura de software, criando camadas de Model, Controller,Service e Middlewares além de testa as camadas. Para realização deste projeto eu fiz os desafios propostos pela Trybe
+Neste projeto, aprendi a criar uma arquitetura de software sólida e organizada, com camadas bem definidas de Model, Controller, Service e Middlewares, para a validação de certas requisições. Além disso, adquiri conhecimentos sobre a importância de testar todas as camadas do projeto, utilizando a biblioteca Sion. Realizando assim os desafios, proposto pela Trybe
 
 # Os desafios eram
 
